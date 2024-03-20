@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <script src="../static/script/main.js" defer></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <title>Home Page</title>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav_container">
+            <a href="#"><h4>BF-Hyd</h4></a>
+            <ul class="nav_menu">
+                <li><a href="./index.html">Home</a></li>
+                    <li><a href="../templates/about.html">About</a></li>
+                    <li><a href="../templates/login.html">Login</a></li>
+                    <li>
+                        <a href="#Login">More</a>
+                        <ul>
+                            <li><a href="../templates/age_calculate.html">Age Calculator</a></li>
+                            <li><a href="../templates/X-ray.html">X-ray</a></li>
+                            <li><a href="#Weather">Weather</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <button id="open-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </nav>
+     
+     <header>
+        <div class="container header_container">
+            <div class="header_left">
+                <h1>BF-Hyd</h1>
+                <p>Hello BF-Hyd People! That sounds like a fantastic initiative. We'd like to share with you this beautifull application, As a breif this is An application that help the users to track their daily water and reminds them to stay hydrated through the day.</p>
+                <a href="about.html" class="btn btn-primary">Get Started</a>
+            </div>
+
+
+            <div class="header_right">
+                <div class="header_right-img">
+                    <img src="../static/images/BF-Hydlogo.jpg" alt="">
+                </div>
+            </div>
+        </div>
+     </header>
+
+
+
+     <!--CATEGORIES-->
+
+     <section class="categories">
+        <div class="container categories_container">
+            <div class="categories_left">
+                <h1>Categories</h1>
+                <p>That's fantastic! Covering HTML, CSS, and JavaScript is a great way to address the fundamental building blocks of web development. These languages are essential for creating dynamic and visually appealing websites.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+
+            <div class="categories_right">
+                
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>HTML</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>CSS</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>JavaScript</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>React</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>Node js</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+                <article class="category">
+                    <span class="category_icon"><i class="fa-brands fa-bitcoin"></i></span>
+                    <h5>Next Js</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, libero!</p>
+                </article>
+
+            </div>
+        </div>
+     </section>
+
+     <!-- Examples -->
+
+     <section class="courses">
+        <h2>Our Popular Projects</h2>
+
+        <div class="container courses__container">
+            <article class="course">
+                <div class="course__image">
+                    <img src="static/images/logo.png" alt="">
+                </div>
+                <div class="course__info">
+                    <h4>BenFa</h4>
+                    <p>BenFa an ecommerce project that helps the users to buy and sell their products as they want.</p>
+                    <a href="http://www.benfa.tech/" class="btn btn-primary">Learn More</a> 
+                </div>
+            </article>
+            
+            <article class="course">
+                <div class="course__image">
+                    <img src="static/images/logoSouEl.png" alt="">
+                </div>
+                <div class="course__info">
+                    <h4>SouEL</h4>
+                    <p>SouEl an E-Learning Project that help the users to learn their favourites subjects, using Php and Html, CSS and JavaScript.</p>
+                    <a href="" class="btn btn-primary">Learn More</a> 
+                </div>
+            </article>
+            
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.library.yorku.ca%2Fds%2Fhome%2Fmedia-creation-lab%2Fdigital-portfolios%2F&psig=AOvVaw0QhmETlK1DIjigZ0w2aSjO&ust=1710989027428000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOi3kvvogYUDFQAAAAAdAAAAABAE" alt="">
+                </div>
+                <div class="course__info">
+                    <h4>PortFolio Project</h4>
+                    <p>A PortFolio Project that simplfy the simple carier.</p>
+                    <a href="" class="btn btn-primary">Learn More</a> 
+                </div>
+            </article>
+            
+        </div>
+
+     </section>
+
+     <!-- Faqs -->
+
+     <section class="faqs">
+        <h2>Frequently Asked Questions</h2>
+        <div class="container faqs__container">
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="question__answer">
+                    <h4>Lorem ipsum dolor sit amet.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae, provident explicabo voluptates voluptas assumenda maxime ipsa, animi nulla exercitationem praesentium perspiciatis mollitia. Mollitia modi adipisci, itaque dicta numquam eaque.</p>
+                </div>
+            </article>
+
+        </div>
+     </section>
+
+     <!-- Testmonials -->
+
+     <section class="container testimonials__container mySwiper">
+        <h2>Students testonials</h2>
+        <div class="swiper-wrapper">
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Fm.gettywallpapers.com%2Fwp-content%2Fuploads%2F2023%2F06%2FBeautiful-Anime-Girl-Profile-Picture-For-Pinterest.jpg&tbnid=jtuuKAIgJnsFqM&vet=10CLkBEDMooAJqFwoTCNDf2_zjgYUDFQAAAAAdAAAAABAE..i&imgrefurl=http%3A%2F%2Fm.gettywallpapers.com%2Fbeautiful-anime-girl-profile-pictures%2F&docid=u4rKReVZS3He5M&w=800&h=800&q=anime%20%20profiles%20pictures&hl=fr&ved=0CLkBEDMooAJqFwoTCNDf2_zjgYUDFQAAAAAdAAAAABAE" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>BenFa</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Fminimal-japanese-kawaii-gamer-girl-chibi-anime-vector-art-sticker-with-clean-bold-line-cute-simple_655090-9168.jpg&tbnid=wx42m3VcXTHc6M&vet=10CEYQMyjuAWoXChMI0N_b_OOBhQMVAAAAAB0AAAAAEAQ..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fminimal-japanese-kawaii-gamer-girl-chibi-anime-vector-art-sticker-with-clean-bold-line-cute-simple_59400870.htm&docid=4qdIWeu7eJo43M&w=626&h=626&q=anime%20%20profiles%20pictures&hl=fr&ved=0CEYQMyjuAWoXChMI0N_b_OOBhQMVAAAAAB0AAAAAEAQ" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Nara</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwall.alphacoders.com%2Fbig.php%3Fi%3D339753&psig=AOvVaw3L6rnPkn0KCSv6_9PrLmBF&ust=1710987316374000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNj5q8vigYUDFQAAAAAdAAAAABAL" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Byakuya</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwallpapers-clan.com%2Fwp-content%2Fuploads%2F2023%2F07%2Fdemon-slayer-rengoku-2-pfp-33.jpg&tbnid=d8tPaZHWfxbXYM&vet=10CCwQMyjiAWoXChMI6ICU0OGBhQMVAAAAAB0AAAAAEAQ..i&imgrefurl=https%3A%2F%2Fwallpapers-clan.com%2Ffr%2Fpfp%2Fdemon-slayer-rengoku-2%2F&docid=07eT3ubp0NV3VM&w=468&h=468&q=anime%20demon%20slayer%20profiles%20pictures&hl=fr&ved=0CCwQMyjiAWoXChMI6ICU0OGBhQMVAAAAAB0AAAAAEAQ" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Rengoku</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ftiermaker.com%2Fimages%2Fchart%2Fchart%2Fjsmp--as-demon-slayer-people-995293%2Fnezukoanimedesignpng.png&tbnid=OtuX8aai2m_Q5M&vet=10CAUQMyjSAWoXChMI6ICU0OGBhQMVAAAAAB0AAAAAEAQ..i&imgrefurl=https%3A%2F%2Ftiermaker.com%2Fcreate%2Fjsmp--as-demon-slayer-people-995293&docid=6DHNQ3wPvdrlpM&w=250&h=250&q=anime%20demon%20slayer%20profiles%20pictures&hl=fr&ved=0CAUQMyjSAWoXChMI6ICU0OGBhQMVAAAAAB0AAAAAEAQ" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Bella</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.instagram.com%2Fseo%2Fgoogle_widget%2Fcrawler%2F%3Fmedia_id%3D3142540588138287836&tbnid=6XIoggPSy58IvM&vet=12ahUKEwiK_NiN4IGFAxUNUaQEHcuzDtYQMygHegQIARBa..i&imgrefurl=https%3A%2F%2Fwww.instagram.com%2Fanime%2F&docid=asmEfOWZX1VVeM&w=1440&h=1800&q=anime%20profiles%20pictures&hl=fr&ved=2ahUKEwiK_NiN4IGFAxUNUaQEHcuzDtYQMygHegQIARBa" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Kai</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.tycoonstory.com%2Fwp-content%2Fuploads%2F2022%2F07%2FAnime-Profile-Pictures-Tycoonstory.jpg&tbnid=cd3bTuYCMXR85M&vet=12ahUKEwjDmP-K34GFAxVokycCHQYxArUQMyhRegUIARCFAg..i&imgrefurl=https%3A%2F%2Fwww.tycoonstory.com%2Fanime-profile-pictures%2F&docid=sN1Rd8cVD3UoyM&w=500&h=286&q=anime%20profiles%20pictures&hl=fr&ved=2ahUKEwjDmP-K34GFAxVokycCHQYxArUQMyhRegUIARCFAg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Fati</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D282999074486553&tbnid=CxWnYApQ3uR5wM&vet=12ahUKEwjDmP-K34GFAxVokycCHQYxArUQMygIegQIARBc..i&imgrefurl=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D282999074486553%26id%3D100083293886930%26set%3Da.125315896921539&docid=AuB-q6D0sxZuqM&w=719&h=721&q=anime%20profiles%20pictures&hl=fr&ved=2ahUKEwjDmP-K34GFAxVokycCHQYxArUQMygIegQIARBc" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Tika</h5>
+                    <small>The user</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic nesciunt provident consequatur minus assumenda, commodi optio modi eum illum.</p>
+                </div>
+            </article>
+        </div>
+        <div class="swiper-pagination"></div>
+     </section>
+
+     <!-- The Footer Start --> 
+
+
+     <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__1">
+                <a href="index.html" class="footer__logo">
+                    <h4></h4>
+                </a>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, enim.
+                </p>
+            </div>
+
+            <div class="footer__2">
+                <h4>Permalinks</h4>
+                <ul class="permalink">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Login">Login</a></li>
+                    <li>
+                        <a href="#Login">More</a>
+                        <ul>
+                            <li><a href="#Age_calculator">Age Calculator</a></li>
+                            <li><a href="#X-ray">X-ray</a></li>
+                            <li><a href="#Weather">Weather</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__3">
+                <h4>Primacy</h4>
+                <ul class="privacy">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__4">
+                <h4>Contact us</h4>
+                <div>
+                    <p>+212 653 17 53 52</p>
+                    <p>bfhyd24@gmail.com</p>
+                </div>
+
+                <ul class="footer__socials">
+                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <small>Copyright &copy; Thunder Coding</small>
+        </div>
+     </footer>
+
+     <!-- The Footer --> 
+     
+     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+     <script>
+        var swiper = new Swiper(".mySwiper",{
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            },
+            breakpoints: {
+                600: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+     </script>
+</body>
+</html>
