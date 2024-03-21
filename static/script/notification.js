@@ -98,11 +98,7 @@ function unsubscribeUser() {
 function initializeUI() {
 	pushButton.addEventListener('click', function() {
 		pushButton.disabled = true;
-		if (isSubscribed) {
-			unsubscribeUser();
-		} else {
-			subscribeUser();
-		}
+        subscribeUser();
 	});
 
 	// Set the initial subscription value
@@ -111,13 +107,6 @@ function initializeUI() {
 			isSubscribed = !(subscription === null);
 
 			updateSubscriptionOnServer(subscription);
-
-			if (isSubscribed) {
-				console.log('User IS subscribed.');
-			} else {
-				console.log('User is NOT subscribed.');
-			}
-
 			updateBtn();
 		});
 }

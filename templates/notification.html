@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style_notification.css') }}">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 		<p>Welcome to the webpush notification. The button below needs to be
 			fixed to support subscribing to push.</p>
 		<p>
-			<button disabled class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+			<button class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
 				Enable Push Messaging
 			</button>
 		</p>
@@ -41,7 +41,7 @@
 		</section>
 	</main>
 
-	<script src="{{ url_for('static',filename='main.js') }}"></script>
+	<script src="{{ url_for('static',filename='script/notification.js') }}"></script>
 	<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 </body>
 
