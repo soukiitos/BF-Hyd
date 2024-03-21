@@ -5,6 +5,7 @@ import requests
 
 from flask import request, Response, render_template, jsonify, Flask
 from pywebpush import webpush, WebPushException
+from forms import loginForm
 
 
 app = Flask(__name__)
@@ -21,16 +22,17 @@ def about():
 
 @app.route('/login')
 def login():
-    form = UserForm()
+    form = loginForm()
 
     if form.validate_on_submit():
         new_user = User(
             username=form.username.data,
-            email=form.email.data,
-            password=form.password.data,
             first_name=form.first_name.data,
             last_name=form.last_name.data,
-            role=form.role.data  # Set the role based on the form submission
+            birthdate=form.birthdate.data,
+            email=form.email.data,
+            phone_number=form.phone_number.data,
+            password=form.password.data,
         )
         
         # Save the new user to the database
