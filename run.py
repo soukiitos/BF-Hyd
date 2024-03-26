@@ -3,9 +3,10 @@ import json
 import os
 import requests
 
-from flask import request, Response, render_template, jsonify, Flask
+from flask import request, Response, render_template, jsonify, Flask, redirect, url_for
 from pywebpush import webpush, WebPushException
-from forms import loginForm
+from models.user import User
+from models.water_intake import WaterIntake
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from datetime import datetime
@@ -74,27 +75,25 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    from forms import loginForm
     form = loginForm()
 
     if form.validate_on_submit():
         new_user = User(
             username=form.username.data,
-            first_name=form.first_name.data,
-            last_name=form.last_name.data,
-            birthdate=form.birthdate.data,
             email=form.email.data,
-            phone_number=form.phone_number.data,
             password=form.password.data,
         )
         
-        # Save the new user to the database
+        # Add the new user to the database
         db.session.add(new_user)
+        # Commit the session to save the user
         db.session.commit()
         
         
-        return render_template('login.html')
+        return redirect(url_for('registration_success'))
     
     return render_template('login.html', form=form)
 
@@ -222,4 +221,6 @@ def send_email():
 
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(host="0.0.0.0", port=8080)
