@@ -81,14 +81,10 @@ def login():
     form = loginForm()
 
     if form.validate_on_submit():
-        existing_user = User.query.filter_by(username=form.username.data).first()
-        if existing_user:
-            flash('Username already exists. Please choose a different username.', 'error')
-            return redirect(url_for('login'))
-            new_user = User(
-                username=form.username.data,
-                email=form.email.data,
-                password=form.password.data,
+        new_user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data,
         )
         
         # Add the new user to the database
@@ -108,10 +104,21 @@ def registration_success():
 
 @app.route('/login', methods=['POST'])
 def signin():
-    # Your login logic here
-    # Assuming the login is successful
-    flash('Hello mate!', 'success')  # Flash a success message
-    return redirect(url_for('homepage'))
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    # Check if user exists in the database
+    user = User.query.filter_by(uername=username, email=email, password=password).first()
+
+    if user:
+        # Redirect to the homepage if user exists
+        flash('Hello mate!', 'success')
+        return redirect(url_for('index'))
+    else:
+        # Display error message if user does not exist
+        flash('Invalid email or password. Please try again.', 'error')
+        return redirect(url_for('login'))
 
 @app.route('/notification')
 def notification():

@@ -27,9 +27,9 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>use your email for registration</span>
-			{{ form.username.label }} {{ form.username }}
-			{{ form.email.label }} {{ form.email }}
-			{{ form.password.label }} {{ form.password }}
+			<input type="text" placeholder="Username" name="username" value="{{ form.username.data }}" />
+			<input type="email" placeholder="Email" name="email" value="{{ form.email.data }}" />
+			<input type="password" placeholder="Password" name="password">
 			<button type="submit">Sign Up</button>
 		</form>
 	</div>
@@ -43,8 +43,9 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			{{ form.email.label }} {{ form.email }}
-			{{ form.password.label }} {{ form.password }}
+			<input type="text" placeholder="Username" name="username" />
+			<input type="email" placeholder="Email" name="email" />
+			<input type="password" placeholder="Password" name="password" />
 			<a href="#">OOPS!! You Forgot your password?</a>
 			<button type="submit">Sign In</button>
 		</form>
