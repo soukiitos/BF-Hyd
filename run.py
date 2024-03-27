@@ -3,7 +3,7 @@ import json
 import os
 import requests
 
-from flask import request, Response, render_template, jsonify, Flask, redirect, url_for
+from flask import request, Response, render_template, jsonify, Flask, redirect, url_for, flash
 from pywebpush import webpush, WebPushException
 from models.user import User
 from models.water_intake import WaterIntake
@@ -81,10 +81,14 @@ def login():
     form = loginForm()
 
     if form.validate_on_submit():
-        new_user = User(
-            username=form.username.data,
-            email=form.email.data,
-            password=form.password.data,
+        existing_user = User.query.filter_by(username=form.username.data).first()
+        if existing_user:
+            flash('Username already exists. Please choose a different username.', 'error')
+            return redirect(url_for('login'))
+            new_user = User(
+                username=form.username.data,
+                email=form.email.data,
+                password=form.password.data,
         )
         
         # Add the new user to the database
@@ -96,6 +100,18 @@ def login():
         return redirect(url_for('registration_success'))
     
     return render_template('login.html', form=form)
+
+@app.route('/registration_success')
+def registration_success():
+    flash('Registration Successful. You can now login.', 'success')
+    return redirect(url_for('login'))
+
+@app.route('/login', methods=['POST'])
+def signin():
+    # Your login logic here
+    # Assuming the login is successful
+    flash('Hello mate!', 'success')  # Flash a success message
+    return redirect(url_for('homepage'))
 
 @app.route('/notification')
 def notification():
