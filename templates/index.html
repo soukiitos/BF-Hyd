@@ -22,9 +22,9 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/water_intake_page">Water Intake</a></li>
                     <li><a href="/notification">Notify Me</a></li>
-                    <li>
+                    <li id="more">
                         <a href="#">More</a>
-                        <ul>
+                        <ul id="more-dropdown">
                             <li><a href="/age_calculate">Age Calculator</a></li>
                             <li><a href="/X-ray">X-ray</a></li>
                             <li><a href="/heartLoader">Heart Loading</a></li>
@@ -32,7 +32,41 @@
                             <li><a href="/Weather">Weather</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <script>
+                        // JavaScript to handle hover effect
+                        var more = document.getElementById('more');
+                        var dropdown = document.getElementById('more-dropdown');
+                    
+                        more.addEventListener('mouseover', function() {
+                            dropdown.style.display = 'block';
+                        });
+                    
+                        more.addEventListener('mouseout', function() {
+                            dropdown.style.display = 'none';
+                        });
+                    </script>
+                    <style>
+                        /* CSS for dropdown */
+                        #more-dropdown {
+                            display: none;
+                            position: absolute;
+                            background-color: transparent;
+                            min-width: 160px;
+                            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                            z-index: 1;
+                        }
+                    
+                        #more-dropdown li {
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                            color: black;
+                        }
+                    
+                        #more-dropdown li:hover {
+                            background-color: transparent;
+                        }
+                    </style>
             </ul>
             <button id="open-menu-btn"><i class="fa-solid fa-bars"></i></button>
             <button id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
@@ -384,19 +418,21 @@
             <div class="footer__2">
                 <h4>Permalinks</h4>
                 <ul class="permalink">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Login">Login</a></li>
-                    <li>
-                        <a href="#Login">More</a>
-                        <ul>
-                            <li><a href="#Age_calculator">Age Calculator</a></li>
-                            <li><a href="#X-ray">X-ray</a></li>
-                            <li><a href="#Weather">Weather</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/water_intake_page">Water Intake</a></li>
+                    <li><a href="/notification">Notify Me</a></li>
+                    <li id="more">
+                        <a href="#">More</a>
+                        <ul id="more-dropdown">
+                            <li><a href="/age_calculate">Age Calculator</a></li>
+                            <li><a href="/X-ray">X-ray</a></li>
+                            <li><a href="/heartLoader">Heart Loading</a></li>
+                            <li><a href="/mass_calculator">Body Mass Calculator</a></li>
+                            <li><a href="/Weather">Weather</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
             </div>
 
             <div class="footer__3">

@@ -28,8 +28,8 @@ self.addEventListener('push', function(event) {
   const title = 'Push Codelab';
   const options = {
     body: `"${event.data.text()}"`,
-    icon: 'images/icon.png',
-    badge: 'images/badge.png'
+    icon: '../static/images/BF-Hydlogo.jpg',
+    badge: '../static/images/badge.png'
   };
 
   event.waitUntil(self.registration.showNotification(title, options));

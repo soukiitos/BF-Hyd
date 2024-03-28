@@ -14,11 +14,20 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Kiitos23456TrueNotYaw'
-app.config['MAIL_SERVER'] = 'smtp.example.com'  # Your SMTP server
+app.config['MAIL_SERVER'] = 'smtp.example.com'
 app.config['MAIL_PORT'] = 587  # Port for SMTP (587 is typical for TLS)
 app.config['MAIL_USE_TLS'] = True  # Enable TLS
 app.config['MAIL_USERNAME'] = 'bfhyd24@gmail.com'
 app.config['MAIL_PASSWORD'] = 'kiitos2024bfhyd24'
+DER_BASE64_ENCODED_PRIVATE_KEY_FILE_PATH = os.path.join(os.getcwd(), "private_key.txt")
+DER_BASE64_ENCODED_PUBLIC_KEY_FILE_PATH = os.path.join(os.getcwd(), "public_key.txt")
+
+VAPID_PRIVATE_KEY = open(DER_BASE64_ENCODED_PRIVATE_KEY_FILE_PATH, "r+").readline().strip("\n")
+VAPID_PUBLIC_KEY = open(DER_BASE64_ENCODED_PUBLIC_KEY_FILE_PATH, "r+").read().strip("\n")
+
+VAPID_CLAIMS = {
+    "sub": "bfhyd24@gmail.com"
+}
 
 # Configure database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://BFHyd:kiitos@localhost/BFHyd_db'
@@ -109,7 +118,7 @@ def signin():
     password = request.form.get('password')
 
     # Check if user exists in the database
-    user = User.query.filter_by(uername=username, email=email, password=password).first()
+    user = User.query.filter_by(username=username, email=email, password=password).first()
 
     if user:
         # Redirect to the homepage if user exists
@@ -120,27 +129,13 @@ def signin():
         flash('Invalid email or password. Please try again.', 'error')
         return redirect(url_for('login'))
 
-@app.route('/notification')
-def notification():
-    DER_BASE64_ENCODED_PRIVATE_KEY_FILE_PATH = os.path.join(os.getcwd(), "private_key.txt")
-    DER_BASE64_ENCODED_PUBLIC_KEY_FILE_PATH = os.path.join(os.getcwd(), "public_key.txt")
-    
-    VAPID_PRIVATE_KEY = open(DER_BASE64_ENCODED_PRIVATE_KEY_FILE_PATH, "r+").readline().strip("\n")
-    VAPID_PUBLIC_KEY = open(DER_BASE64_ENCODED_PUBLIC_KEY_FILE_PATH, "r+").read().strip("\n")
-    
-    VAPID_CLAIMS = {
-        "sub": "mailto:develop@raturi.in"
-        }
-        
-    def send_web_push(subscription_information, message_body):
-        return webpush(
-            subscription_info=subscription_information,
-            data=message_body,
-            vapid_private_key=VAPID_PRIVATE_KEY,
-            vapid_claims=VAPID_CLAIMS
-            )
-            
-    return render_template('notification.html')
+def send_web_push(subscription_information, message_body):
+    return webpush(
+        subscription_info=subscription_information,
+        data=message_body,
+        vapid_private_key=VAPID_PRIVATE_KEY,
+        vapid_claims=VAPID_CLAIMS
+        )
 
 @app.route('/subscription/', methods=["GET", "POST"])
 def subscription():
@@ -155,7 +150,8 @@ def subscription():
 
 @app.route("/push_v1/", methods=['POST'])
 def push_v1():
-    message = "Push Test v1"
+    message = "Hello!! Mate! Drink Your water Now and stay Healty.\n  Have a Great Day:)"
+    print("is_json", request.is_json)
     
     if not request.json or not request.json.get('sub_token'):
         return jsonify({'failed': 1})
@@ -166,8 +162,10 @@ def push_v1():
         send_web_push(token, message)
         return jsonify({'success': 1})
     except Exception as e:
-        app.logger.error("Error sending push notification: %s", e)
+        print("error", e)
         return jsonify({'failed': str(e)})
+
+    return render_template('notification.html')
 
 @app.route('/age_calculate')
 def age_calculate():
