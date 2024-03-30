@@ -2,55 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/weather.css">
-    <title>Weather</title>
+    <title>Check the Weather</title>
 </head>
 <body>
-    <div class="container">
-        <div class="weather-side">
-          <div class="weather-gradient"></div>
-          <div class="date-container">
-            <h2 class="date-dayname">Monday</h2><span class="date-day">{{ weather_data.date }}</span><i class="location-icon" data-feather="map-pin"></i><span class="location">{{ weather_data.city }}</span>
-          </div>
-          <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
-            <h1 class="weather-temp">{{ weather_data.temperature }}</h1>
-            <h3 class="weather-desc">{{ weather_data.description }}</h3>
-          </div>
-        </div>
-        <div class="info-side">
-          <div class="today-info-container">
-            <div class="today-info">
-              <div class="precipitation"> <span class="title">PRECIPITATION</span><span class="value">0 %</span>
-                <div class="clear"></div>
-              </div>
-              <div class="humidity"> <span class="title">HUMIDITY</span><span class="value">{{ weather_data.humidity }}</span>
-                <div class="clear"></div>
-              </div>
-              <div class="wind"> <span class="title">WIND</span><span class="value">{{ weather_data.wind_speed }}</span>
-                <div class="clear"></div>
-              </div>
-            </div>
-          </div>
-          <div class="week-container">
-            <ul class="week-list">
-              <li class="active"><i class="day-icon" data-feather="sun"></i><span class="day-name">Mon</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="cloud"></i><span class="day-name">Tue</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="cloud"></i><span class="day-name">Wed</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="cloud-rain"></i><span class="day-name">Thu</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="cloud-rain"></i><span class="day-name">Fri</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="cloud"></i><span class="day-name">Sat</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <li class="active"><i class="day-icon" data-feather="sun"></i><span class="day-name">Sun</span><span class="day-temp">{{ weather_data.temperature }}</span></li>
-              <div class="clear"></div>
-            </ul>
-          </div>
-          <div class="location-container">
-            <button class="location-button"> <i data-feather="map-pin"></i><span>Change location</span></button>
+  
+  <div class="container">
+    <div class="search-box">
+      <i class='bx bxs-map'></i>
+      <input type="text" placeholder="Enter Your Location">
+      <button class="bx bx-search-alt"></button>
+    </div>
+
+    <div class="weather-box">
+      <div class="box">
+        <div class="info-weather">
+          <div class="weather">
+            <img src="../static/images/cloud.png" alt="">
+            <p class="temperature">0 <span>°C</span></p>
+            <p class="description">Broken Clouds</p>
           </div>
         </div>
       </div>
-      
-      <script  src="../static/script/weather.js"></script>
+    </div>
+
+    <div class="weather-details">
+      <div class="humidity">
+        <i class='bx bx-water'></i>
+        <div class="text">
+          <div class="info-humidity">
+            <span>0%</span>
+          </div>
+          <p>humidity</p>
+        </div>
+      </div>
+
+      <div class="wind">
+        <i class='bx bx-wind'></i>
+        <div class="text">
+          <div class="info-wind">
+            <span>0km/h</span>
+          </div>
+          <p>Wind Speed</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- style fixing in js <div class="not-found">
+      <div class="box">
+        <img src="../static/images/404.png" alt="">
+        <p>OOOPS!!! This Location not found!</p>
+      </div>
+    </div> -->
+  </div>
+
+  <script  src="../static/script/weather.js"></script>
 </body>
 </html>
