@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from datetime import datetime
 from flask_mail import Mail, Message
+from forms import loginForm, SigninForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Kiitos23456TrueNotYaw'
@@ -38,6 +39,14 @@ db = SQLAlchemy(app)
 
 # Initialize Marshmallow
 ma = Marshmallow(app)
+
+def send_web_push(subscription_information, message_body):
+    return webpush(
+        subscription_info=subscription_information,
+        data=message_body,
+        vapid_private_key=VAPID_PRIVATE_KEY,
+        vapid_claims=VAPID_CLAIMS
+        )
 
 # API Endpoint to Add Water Intake
 @app.route('/water_intake', methods=['GET', 'POST'])
@@ -84,58 +93,54 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET'])
 def login():
-    from forms import loginForm
-    form = loginForm()
+    login_form = SigninForm()
+    signup_form = loginForm()
+    return render_template('login.html', signup_form=signup_form, login_form=login_form)
 
-    if form.validate_on_submit():
+@app.route('/signup', methods=['POST'])
+def signup():
+    signup_form = loginForm(request.form)
+
+    if signup_form.validate_on_submit():
         new_user = User(
-            username=form.username.data,
-            email=form.email.data,
-            password=form.password.data,
-        )
-        
+            username=signup_form.username.data,
+            email=signup_form.email.data,
+            password=signup_form.password.data,
+            )
+
         # Add the new user to the database
         db.session.add(new_user)
         # Commit the session to save the user
         db.session.commit()
-        
-        
-        return redirect(url_for('registration_success'))
-    
-    return render_template('login.html', form=form)
 
-@app.route('/registration_success')
-def registration_success():
     flash('Registration Successful. You can now login.', 'success')
     return redirect(url_for('login'))
 
-@app.route('/login', methods=['POST'])
+    return render_template('login.html', signup_form=signup_form)
+
+@app.route('/signin', methods=['POST'])
 def signin():
-    username = request.form.get('username')
+    login_form = SigninForm(request.form)
     email = request.form.get('email')
     password = request.form.get('password')
 
-    # Check if user exists in the database
-    user = User.query.filter_by(username=username, email=email, password=password).first()
+    # Query the database for the user with the provided email
+    user = User.query.filter_by(email=email).first()
 
-    if user:
-        # Redirect to the homepage if user exists
-        flash('Hello mate!', 'success')
-        return redirect(url_for('index'))
+    # Check if the user exists and if the password is correct
+    if user and user.check_password(password):
+        # Authentication successful, redirect to the homepage
+        return render_template('/')
     else:
         # Display error message if user does not exist
-        flash('Invalid email or password. Please try again.', 'error')
+        flash('Invalid email or password. Please try again. If you are not signed up, Sign Up First', 'error')
         return redirect(url_for('login'))
 
-def send_web_push(subscription_information, message_body):
-    return webpush(
-        subscription_info=subscription_information,
-        data=message_body,
-        vapid_private_key=VAPID_PRIVATE_KEY,
-        vapid_claims=VAPID_CLAIMS
-        )
+@app.route('/notification')
+def notification():
+    return render_template('notification.html')
 
 @app.route('/subscription/', methods=["GET", "POST"])
 def subscription():
@@ -164,8 +169,6 @@ def push_v1():
     except Exception as e:
         print("error", e)
         return jsonify({'failed': str(e)})
-
-    return render_template('notification.html')
 
 @app.route('/age_calculate')
 def age_calculate():
@@ -238,10 +241,13 @@ def send_email():
     msg.body = "Hello mate, it's time to get you're water. don't forget to be always hydrated"
     mail.send(msg)
     return 'Email sent successfully'
-    
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+    
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host="0.0.0.0", port=8080)
+    app.run(debug=True)
