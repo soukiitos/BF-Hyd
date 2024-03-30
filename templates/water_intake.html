@@ -5,8 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Intake Tracker</title>
     <link rel="stylesheet" href="../static/css/water_intake.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        /* CSS for the logo */
+        .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: left;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <div class="container nav_container">
+            <a href="/">
+                <img src="../static/images/BF-Hydlogo.jpg" alt="logo" class="logo">
+                <h4>BF-Hyd</h4>
+            </a>
+            <ul class="nav_menu">
+                <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/water_intake_page">Water Intake</a></li>
+                    <li><a href="/notification">Notify Me</a></li>
+                    <li id="more">
+                        <a href="#">More</a>
+                        <ul id="more-dropdown">
+                            <li><a href="/age_calculate">Age Calculator</a></li>
+                            <li><a href="/X-ray">X-ray</a></li>
+                            <li><a href="/heartLoader">Heart Loading</a></li>
+                            <li><a href="/mass_calculator">Body Mass Calculator</a></li>
+                            <li><a href="/Weather">Weather</a></li>
+                        </ul>
+                    </li>
+                    <script>
+                        // JavaScript to handle hover effect
+                        var more = document.getElementById('more');
+                        var dropdown = document.getElementById('more-dropdown');
+                    
+                        more.addEventListener('mouseover', function() {
+                            dropdown.style.display = 'block';
+                        });
+                    
+                        more.addEventListener('mouseout', function() {
+                            dropdown.style.display = 'none';
+                        });
+                    </script>
+                    <style>
+                        /* CSS for dropdown */
+                        #more-dropdown {
+                            display: none;
+                            position: absolute;
+                            background-color: transparent;
+                            min-width: 160px;
+                            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                            z-index: 1;
+                        }
+                    
+                        #more-dropdown li {
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                            color: black;
+                        }
+                    
+                        #more-dropdown li:hover {
+                            background-color: transparent;
+                        }
+                    </style>
+                    <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            <button id="open-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </nav>
     <h1>Welcome to the Water Intake Tracker</h1>
     <form id="water-intake-form">
         <label for="user-id">User ID:</label>

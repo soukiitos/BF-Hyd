@@ -10,3 +10,11 @@ class loginForm(FlaskForm):
     password = StringField('Password')
     
     submit = SubmitField('SIGN UP')
+
+
+class SigninForm(FlaskForm):
+    user_id = StringField('User ID')
+    email = StringField(' User mail')
+    password = StringField('Password')
+    
+    submit = SubmitField('SIGN IN')

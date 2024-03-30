@@ -4,9 +4,20 @@
   <meta charset="UTF-8">
   <link rel='stylesheet' href="../static/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <style>
+        /* CSS for the logo */
+        .logo {
+            width: 60px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: left;
+            border-radius: 50%;
+        }
+    </style>
   <title>Sign in/up</title>
 </head>
 <body>
+	<a href="/"><img src="../static/images/BF-Hydlogo.jpg" alt="logo" class="logo"></a>
 <div class="container" id="container">
 	{% with messages = get_flashed_messages(with_categories=true) %}
 	{% if messages %}
@@ -18,8 +29,8 @@
 	{% endif %}
 	{% endwith %}
 	<div class="form-container sign-up-container">
-		<form action="{{ url_for('login') }}" method="POST">
-			{{ form.csrf_token }}
+		<form action="{{ url_for('signup') }}" method="POST">
+			{{ signup_form.csrf_token }}
 			<h1>Sign Up (Create your Account here Mate)</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -27,15 +38,15 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>use your email for registration</span>
-			<input type="text" placeholder="Username" name="username" value="{{ form.username.data }}" />
-			<input type="email" placeholder="Email" name="email" value="{{ form.email.data }}" />
+			<input type="text" placeholder="Username" name="username" value="{{ signup_form.username.data }}" />
+			<input type="email" placeholder="Email" name="email" value="{{ signup_form.email.data }}" />
 			<input type="password" placeholder="Password" name="password">
 			<button type="submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="{{ url_for('signin') }}" method="POST">
-			{{ form.csrf_token }}
+			{{ login_form.csrf_token }}
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
