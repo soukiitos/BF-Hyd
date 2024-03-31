@@ -4,15 +4,26 @@
   <meta charset="UTF-8">
   <title>Mass calculator</title>
   <link rel="stylesheet" href="../static/css/mass_calculator.css">
-
+  <style>
+    /* CSS for the logo */
+    .logo {
+        width: 80px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: left;
+        border-radius: 50%;
+    }
+</style>
 </head>
 <body>
+  <a href="/"><img src="../static/images/BF-Hydlogo.jpg" alt="logo" class="logo"></a>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
 </head>
 <body>
   <h3><b>B</b>ody <b>M</b>ass  <b>C</b>alculator</h3>
-<form class="form" id="form" onsubmit="return validateForm()">
+<form class="form" id="form" onsubmit="return validateForm()" method="POST" action="{{ url_for('mass_calculator') }}">
+  {{ form.csrf_token }}
 <div class="row-one">
   <input type="text" class="text-input" id="age" autocomplete="off" required/><p class="text">Age</p>
   <label class="container">

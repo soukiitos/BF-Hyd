@@ -1,5 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import HiddenField, StringField, FloatField, TextAreaField, SubmitField, SelectField
+from wtforms import IntegerField, RadioField
+from wtforms.validators import InputRequired, NumberRange
 
 
 class loginForm(FlaskForm):
@@ -18,3 +20,10 @@ class SigninForm(FlaskForm):
     password = StringField('Password')
     
     submit = SubmitField('SIGN IN')
+
+
+class MassCalculatorForm(FlaskForm):
+    age = IntegerField('Age', validators=[InputRequired(), NumberRange(min=0)])
+    gender = RadioField('Gender', choices=[('male', 'Male'), ('female', 'Female')], validators=[InputRequired()])
+    height = FloatField('Height (cm)', validators=[InputRequired(), NumberRange(min=0)])
+    weight = FloatField('Weight (kg)', validators=[InputRequired(), NumberRange(min=0)])

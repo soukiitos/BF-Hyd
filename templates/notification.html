@@ -13,10 +13,20 @@
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style_notification.css') }}">
+	<style>
+        /* CSS for the logo */
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: left;
+            border-radius: 50%;
+        }
+    </style>
 </head>
-
+<a href="/"><img src="../static/images/BF-Hydlogo.jpg" alt="logo" class="logo"></a>
 <body>
-
+	
 	<header>
 		<h1>Send Notification</h1>
 	</header>

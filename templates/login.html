@@ -7,7 +7,7 @@
     <style>
         /* CSS for the logo */
         .logo {
-            width: 60px;
+            width: 80px;
             height: auto;
             margin-right: 10px;
             vertical-align: left;
@@ -45,8 +45,8 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="{{ url_for('signin') }}" method="POST">
-			{{ login_form.csrf_token }}
+		<form>
+			
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -57,7 +57,7 @@
 			<input type="email" placeholder="Email" name="email" />
 			<input type="password" placeholder="Password" name="password" />
 			<a href="#">OOPS!! You Forgot your password?</a>
-			<button type="submit">Sign In</button>
+			<button type="submit"><a href="/" style="color: white;">Sign In</a></button>
 		</form>
 	</div>
 	<div class="overlay-container">

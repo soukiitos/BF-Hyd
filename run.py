@@ -2,6 +2,7 @@ import logging
 import json
 import os
 import requests
+import atexit
 
 from flask import request, Response, render_template, jsonify, Flask, redirect, url_for, flash
 from pywebpush import webpush, WebPushException
@@ -10,16 +11,15 @@ from models.water_intake import WaterIntake
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from datetime import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask_mail import Mail, Message
-from forms import loginForm, SigninForm
+from forms import loginForm, SigninForm, MassCalculatorForm
+from models.masscalculator import MassCalculatorData
 
+# Initialize Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Kiitos23456TrueNotYaw'
-app.config['MAIL_SERVER'] = 'smtp.example.com'
-app.config['MAIL_PORT'] = 587  # Port for SMTP (587 is typical for TLS)
-app.config['MAIL_USE_TLS'] = True  # Enable TLS
-app.config['MAIL_USERNAME'] = 'bfhyd24@gmail.com'
-app.config['MAIL_PASSWORD'] = 'kiitos2024bfhyd24'
+
 DER_BASE64_ENCODED_PRIVATE_KEY_FILE_PATH = os.path.join(os.getcwd(), "private_key.txt")
 DER_BASE64_ENCODED_PUBLIC_KEY_FILE_PATH = os.path.join(os.getcwd(), "public_key.txt")
 
@@ -37,8 +37,27 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 
+# Initialize Flask-Mail
+mail = Mail(app)
+
 # Initialize Marshmallow
 ma = Marshmallow(app)
+
+def send_email():
+    with app.app_context():
+        from models.user import User
+        users = User.query.all()
+        for user in users:
+            msg = Message('Daily Reminder', recipients=[user.email])
+            msg.body = "Hello {}, it's time to drink water and stay hydrated!".format(user.username)
+            mail_send(msg)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587  # Port for SMTP (587 is typical for TLS)
+app.config['MAIL_USE_TLS'] = True  # Enable TLS
+app.config['MAIL_USERNAME'] = 'bfhyd24@gmail.com'
+app.config['MAIL_PASSWORD'] = 'cnuqnlyizrmboqfg'
+
 
 def send_web_push(subscription_information, message_body):
     return webpush(
@@ -47,6 +66,11 @@ def send_web_push(subscription_information, message_body):
         vapid_private_key=VAPID_PRIVATE_KEY,
         vapid_claims=VAPID_CLAIMS
         )
+
+@app.route('/test_send_email')
+def test_send_email():
+    send_email()  # Trigger the send_email function
+    return 'Test email sent successfully!'
 
 # API Endpoint to Add Water Intake
 @app.route('/water_intake', methods=['GET', 'POST'])
@@ -122,7 +146,7 @@ def signup():
 
 @app.route('/signin', methods=['POST'])
 def signin():
-    login_form = SigninForm(request.form)
+    signin_form = SigninForm(request.form)
     email = request.form.get('email')
     password = request.form.get('password')
 
@@ -132,11 +156,12 @@ def signin():
     # Check if the user exists and if the password is correct
     if user and user.check_password(password):
         # Authentication successful, redirect to the homepage
-        return render_template('/')
+        return redirect(url_for('index'))
     else:
         # Display error message if user does not exist
         flash('Invalid email or password. Please try again. If you are not signed up, Sign Up First', 'error')
         return redirect(url_for('login'))
+    return render_template('index')
 
 @app.route('/notification')
 def notification():
@@ -182,72 +207,47 @@ def x_ray():
 def heart_loader():
     return render_template('heartLoader.html')
 
-@app.route('/mass_calculator')
-def mass_claculator():
-    return render_template('mass_claculator.html')
+@app.route('/mass_calculator', methods=['GET', 'POST'])
+def mass_calculator():
+    form = MassCalculatorForm()
+    
+    if form.validate_on_submit():
+        age = form.age.data
+        gender = form.gender.data
+        height = form.height.data
+        weight = form.weight.data
+
+        # Create a new MassCalculatorData instance and store it in the database
+        new_data = MassCalculatorData(age=age, gender=gender, height=height, weight=weight)
+        db.session.add(new_data)
+        db.session.commit()
+
+        flash('Data submitted successfully!', 'success')
+        return redirect(url_for('mass_calculator'))
+        
+    return render_template('mass_claculator.html', form=form)
 
 @app.route('/Weather')
 def weather():
-    # Mock weather data
-    mock_weather_data = [
-        {
-            'city': 'Kenitra',
-            'temperature': '25°C',
-            'description': 'Sunny',
-            'humidity': '50%',
-            'wind_speed': '10 km/h',
-        },
-        {
-            'city': 'Rabat',
-            'temperature': '29°C',
-            'description': 'Sunny',
-            'humidity': '35%',
-            'wind_speed': '2 km/h', 
-        },
-        {
-            'city': 'Paris',
-            'temperature': '27°C',
-            'description': 'Sunny',
-            'humidity': '34%',
-            'wind_speed': '0 km/h',
-        },
-        {
-            'city': 'New York',
-            'temperature': '9°C',
-            'description': 'cloud-rain',
-            'humidity': '23%',
-            'wind_speed': '14 km/h',
-        }
-    ]
-    date = 'Monday, 01 April 2024'
-
-    # Prepare the weather data for rendering in the HTML template
-    weather_data_for_html = [
-        {
-            'date': date,
-            'city': data['city'],
-            'temperature': data['temperature'],
-            'description': data['description'],
-            'humidity': data['humidity'],
-            'wind_speed': data['wind_speed'],
-        } for data in mock_weather_data
-    ]
-
-    return render_template('weather.html', weather_data=weather_data_for_html)
-
-@app.route('/send_email')
-def send_email():
-    msg = Message('Subject of the Email', recipients=['example@gmail.com'])
-    msg.body = "Hello mate, it's time to get you're water. don't forget to be always hydrated"
-    mail.send(msg)
-    return 'Email sent successfully'
+    # I already done the weather API at weather.js
+    return render_template('weather.html')
 
 @app.route('/contact')
 def contact():
+    # I already fix the sending msg from the users: so it's all fixed
     return render_template('contact.html')
     
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+
+    # Schedule the task to run daily
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(send_email, 'cron', hour=8, minute=10)  # Send email daily at 08:10
+    scheduler.start()
+    
+    # Stop the scheduler when the Flask app exits
+    atexit.register(lambda: scheduler.shutdown())
+    
     app.run(debug=True)
