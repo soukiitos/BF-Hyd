@@ -1,5 +1,8 @@
-<center> <h1> BF-Hyd (Be Forever Hydrated)</h1> </center>
-![BF-Hyd Logo](static/images/BF-Hydlogo.jpg) 
+<center> <h1> BF-Hyd (Be Forever Hydrated)</h1> </center>  
+  
+<p align="center">
+  <img src="static/images/BF-Hydlogo.jpg" width="400">
+</p>
 
 ## Description
 
