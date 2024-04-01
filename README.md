@@ -1,7 +1,9 @@
-<center> <h1> BF-Hyd (Be Forever Hydrated)</h1> </center>  
+<center>
+    <h1> BF-Hyd (Be Forever Hydrated)</h1>
+</center>  
   
 <p align="center">
-  <img src="static/images/BF-Hydlogo.jpg" width="400">
+  <img src="static/images/BF-Hydlogo.jpg" width="600" border-radius="30%">
 </p>
 
 ## Description
@@ -72,22 +74,41 @@ pip install -r requirements.txt
 ## Some BF-Hyd Pages Images:
 
 - The [homepage]((https://github.com/soukiitos/BF-Hyd/blob/main/templates/index.html)) here is a snippest of how it looks like:
-![homepage](static/images/index_cap.png)  
+<p align="center">
+  <img src="static/images/index_cap.png" width="400">
+</p>  
 
-- I used a card to talk a bit about my portfolio and give a small Description of this project, and some of languages i used, here is the about card:
-![about](static/images/about.png)  
+- I used a card to talk a bit about my portfolio and give a small Description of this project, and some of languages i used, here is the about card:  
+
+<p align="center">
+  <img src="static/images/about.png" width="400">
+</p>  
 
 - I tried to bring the user closer to the application, so i created [Contact Us](https://github.com/soukiitos/BF-Hyd/blob/main/templates/contact.html) form to communicate with us: here is a how it looks like:
-![contact](static/images/contact_cap1.png)
-![contact](static/images/contact_cap2.png)  
+<p align="center">
+  <img src="static/images/contact_cap1.png" width="400">
+</p>
+<p align="center">
+  <img src="static/images/contact_cap2.png" width="400">
+</p> 
 
-- I tried to make the user love this application and visit it time by time, i did a age calculator and Mass Body Calculator forms, here are how they look like:
-![age_calculator](static/images/ageCal-cap.png)  
-![masscalculator](static/images/BodyMassCal_cap.png)  
+- I tried to make the user love this application and visit it time by time, i did a age calculator and Mass Body Calculator forms, here are how they look like:  
 
-- I did a small Weather Application, so we know that the weather is related to hydration, that's why i wanted to make the user aware of everything to stay healthy. here is how the app looks like:
-![WeatherApp](static/images/weather_cap.png)  
+<p align="center">
+  <img src="static/images/ageCal-cap.png" width="400">
+</p>
+<p align="center">
+  <img src="static/images/BodyMassCal_cap.png" width="400">
+</p>  
+
+- I did a small Weather Application, so we know that the weather is related to hydration, that's why i wanted to make the user aware of everything to stay healthy. here is how the app looks like:  
+<p align="center">
+  <img src="static/images/weather_cap.png" width="400">
+</p>  
 
 - To make this app funny, i wanted the user to discover a lot of things and make hiw enjoy visiting it, i did a Virtuel X-ray Experience, here is how it looks like:
-![x_ray](static/images/X-ray_cap.png)
+<p align="center">
+  <img src="static/images/X-ray_cap.png" width="400">
+</p>
 
+## API'S:
