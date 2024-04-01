@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         
-        const userId = document.getElementById('user-id').value;
-        const amount = document.getElementById('amount').value;
+        const userId = parseFloat(document.getElementById('user-id').value);
+        const amount = parseFloat(document.getElementById('amount').value);
         const date = document.getElementById('date').value;
 
         // Send a POST request to add water intake

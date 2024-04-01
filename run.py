@@ -14,6 +14,7 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask_mail import Mail, Message
 from forms import loginForm, SigninForm, MassCalculatorForm
+from forms import WaterIntakeForm
 from models.masscalculator import MassCalculatorData
 
 # Initialize Flask app

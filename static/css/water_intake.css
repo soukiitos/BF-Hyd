@@ -1,34 +1,73 @@
-body {
+* {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #020f13;
+  }
+  
+  body {
     font-family: Arial, sans-serif;
+    background: #83c5be;
+    margin: 0;
+    height: 100vh;
+    padding: 0;
+    border: 0;
 }
 
 form {
-    margin-bottom: 20px;
-}
-
-label {
+    background-color: #fff;
+    height: 300px;
+    width: 700px;
+    border-radius: 20px;
+    margin: 20px auto 20px auto;
     display: block;
-    margin-bottom: 5px;
+    border-radius: 31px;
+    background: #83c5be;
+    box-shadow:  25px 25px 55px #6aa09a,
+               -25px -25px 55px #9ceae2;
 }
 
+.form:hover {
+    transition: .4s;
+    transform: scale(1.05);
+  }
+
+form label {
+    width: 95%;
+    display: block;
+    margin-bottom: 15px;
+}
+ 
 input[type="text"],
 input[type="number"],
 input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: #9ceae2;
+    border-radius: 7px;
 }
 
+
 button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
     border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 140px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #e29578;
+    border: 2px solid #e29578;
+    color: #fff;
+    margin: auto;
+    display: block;
+    outline: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: red;
+    border: 2px solid #e29578;
+    transition: 0.5s;
 }
 
 .water-intake-entry {
@@ -37,3 +76,16 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  h1 b {
+    font-size: 32px;
+    font-weight: 600;
+    color: cadetblue;
+  }

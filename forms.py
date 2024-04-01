@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import HiddenField, StringField, FloatField, TextAreaField, SubmitField, SelectField
+from wtforms import DateField
 from wtforms import IntegerField, RadioField
-from wtforms.validators import InputRequired, NumberRange
+from wtforms.validators import InputRequired, NumberRange, Length
 
 
 class loginForm(FlaskForm):
@@ -20,7 +21,12 @@ class SigninForm(FlaskForm):
     password = StringField('Password')
     
     submit = SubmitField('SIGN IN')
-
+    
+    
+class WaterIntakeForm(FlaskForm):
+    user_id = FloatField('User ID', validators=[InputRequired(), Length(max=50)])
+    amount = FloatField('Amount (in liters)', validators=[InputRequired(), NumberRange(min=0)])
+    date = DateField('Date', validators=[InputRequired()])
 
 class MassCalculatorForm(FlaskForm):
     age = IntegerField('Age', validators=[InputRequired(), NumberRange(min=0)])
