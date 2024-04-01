@@ -1,6 +1,12 @@
 <center>
     <h1> BF-Hyd (Be Forever Hydrated)</h1>
 </center>  
+
+#### The personal mail:
+[soukainalachheb93@gmail.com]()
+
+#### The BF-Hyd mail: 
+[bfhyd24@gmail.com]()
   
 <p align="center">
   <img src="static/images/BF-Hydlogo.jpg" width="600" border-radius="30%">
@@ -8,13 +14,14 @@
 
 ## Description
 
-BF-Hyd is an application that helps users track their daily water intake and reminds them to stay hydrated throughout the day. I chose this name to be simple and easy to spell and remember. and also there are other topics in this project like help the user to calculate their age, and Calculate their Body Mass Index... etc, and also there is a small weather application beautifull and cute. I hope you all like [This Project](https://github.com/soukiitos/BF-Hyd)
+BF-Hyd is an application that helps users track their daily water intake and reminds them to stay hydrated throughout the day. I chose this name to be simple and easy to spell and remember. and also there are other topics in this project like help the user to calculate their age, and Calculate their Body Mass Index... etc, and also there is a small weather application beautifull and cute. I hope you all like [This Project](https://github.com/soukiitos/BF-Hyd), BF-Hyd offers a diverse range of functionalities to promote user engagement and well-being.
 
 ---
 
 ## Team
+- Soukaina Lachheb  
 
-This is an individual project. I am Soukaina Lachheb, and I developed this project alone, taking it as a challenge.  
+I developed BF-Hyd as an individual project, driven by my passion for health and technology. It has been a challenging yet rewarding journey, and I am proud to share the results with you.  
   
 
 ------------------------------------
@@ -92,6 +99,16 @@ pip install -r requirements.txt
   <img src="static/images/contact_cap2.png" width="400">
 </p> 
 
+- Of course we must do a login form, so when he sign up with us, he'll get a daily notification in his phone, so here is how the Sign In/ Sign Up form looks like:  
+<p align="center">
+  <img src="static/images/login-cap.png" width="400">
+</p>
+
+- And here is how the notification looks like:  
+<p align="center">
+  <img src="static/images/alert-test.jpg" width="400">
+</p>
+
 - I tried to make the user love this application and visit it time by time, i did a age calculator and Mass Body Calculator forms, here are how they look like:  
 
 <p align="center">
@@ -112,3 +129,90 @@ pip install -r requirements.txt
 </p>
 
 ## API'S:
+
+So for the api's i tried to find the api's as possible, so:  
+- for the WEATHERAPI i used this mail[https://openweathermap.org/](https://openweathermap.org/), i create my account and get My API Keys, then i choose the API call:  
+```bash
+https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}
+```
+
+- So for the notificationn i tred Three ways to send messages, so first one i used: PushBullet[https://www.pushbullet.com/](https://www.pushbullet.com/) i created my own account in it too, i set the settigs and access key, and i get my APIKey, then i linked it with [alert.py](https://github.com/soukiitos/BF-Hyd/blob/main/alert.py) and [message.txt](https://github.com/soukiitos/BF-Hyd/blob/main/message.txt) to Pythonanywhere [https://www.pythonanywhere.com/](https://www.pythonanywhere.com/) so in pythonanywhere i set the database, and tasks where Schedule tasks(!!I tried just the free users)
+
+- For /send_message, i set the SMTP to set the connection between the application and users at a scheduled time, i set the SMTP at the mail 'bfhyd24@gmail.com', here is the configuration in run.py:
+```bash
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587  # Port for SMTP (587 is typical for TLS)
+app.config['MAIL_USE_TLS'] = True  # Enable TLS
+app.config['MAIL_USERNAME'] = 'bfhyd24@gmail.com'
+app.config['MAIL_PASSWORD'] = 'PASSWORDGIVEN'
+``` 
+and sheduled the time like here :
+```
+# Schedule the task to run daily
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(send_email, 'cron', hour=8, minute=10)  # Send email daily at 08:10
+    scheduler.start()
+    
+    # Stop the scheduler when the Flask app exits
+    atexit.register(lambda: scheduler.shutdown())
+```
+
+## Frameworks
+- W3C [https://www.w3.org](https://www.w3.org/)
+- sweetalert2[https://sweetalert2.github.io](https://sweetalert2.github.io/)
+- Box Icons [https://boxicons.com/](https://boxicons.com/)
+- Bootsrap [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
+
+## Run Mode:`
+to run this project in local, i tried the command:
+```bash
+flask run
+```
+
+it shows like this:
+```
+flask run
+ * Serving Flask app 'run.py'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+
+## DataBase Configuration:
+```
+# Configure database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://BFHyd:kiitos@localhost/BFHyd_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+```
+
+I setup mysql with a file i named it with [setup_mysql.sql](https://github.com/soukiitos/BF-Hyd/blob/main/setup_mysql.sql)
+
+```
+mysql -u BFHyd -p
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 76
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |  
++--------------------+  
+| bfhyd_db           |  
+| information_schema |  
+| performance_schema |  
++--------------------+  
+3 rows in set (0.03 sec)
+```
+
+## Conclusion:
+In conclusion, I hope that BF-Hyd will serve as a useful tool for users seeking to improve their hydration habits and overall health. Thank you for taking the time to explore this project, and I welcome any feedback or contributions to further enhance its capabilities.
